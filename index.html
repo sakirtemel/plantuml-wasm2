@@ -41,8 +41,9 @@
         }
        
         function render(){
+            const path = window.location.pathname
             cheerpjAddStringFile("/str/input.puml", editor.getValue());
-            cheerpjRunMain("net.sourceforge.plantuml.Run", "/app/plantuml-wasm2/plantuml-wasm/plantuml-1.2023.0.jar", "-Playout=smetana", "-o", "/files/", "/str/input.puml").then(() => {
+            cheerpjRunMain("net.sourceforge.plantuml.Run", "/app" + path + "plantuml-wasm/plantuml-1.2023.0.jar", "-Playout=smetana", "-o", "/files/", "/str/input.puml").then(() => {
                 window.cjFileBlob("input.png").then((blob) => {
                     document.getElementById('renderedImage').src = window.URL.createObjectURL(blob)
                 })                
